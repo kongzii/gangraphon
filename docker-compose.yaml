@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  base:
+    runtime: nvidia
+    build:
+        context: .
+        args:
+          USER_ID: "$USER_ID"
+          GROUP_ID: "$GROUP_ID"
+    volumes:
+      - ./:/app
+
+  tensorboard:
+    image: tensorflow/tensorflow:latest
+    command: tensorboard serve --host 0.0.0.0 --port 8080 --logdir /app/data/tensorboard_logs
+    ports:
+      - 8080:8080
+    volumes:
+     - ./:/app
