@@ -36,7 +36,7 @@ RUN pyenv install $PYTHON_VERSION \
 
 ENV PATH $PYENV_ROOT/versions/$PYTHON_VERSION/bin:$PATH
 
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+RUN curl -sSL https://install.python-poetry.org | python -
 ENV PATH "${PATH}:${HOME}/.poetry/bin"
 
 ENV PYTHONPATH /app
